@@ -1,0 +1,24 @@
+/*
+  dLab font
+ */
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+
+
+body {
+  color: #333333;
+  font-family: 'Comfortaa';
+  margin: 0 0 0 0;
+}
+
+body::before {
+  display: block;
+  height: 50px;
+  background-color: #ffffff;
+  content: "";
+  margin: 0 0 0 0;
+  padding: 10px 10px 10px 10px;
+  border: 20px solid #ffffff;
+  background-image: url('./dlab.png');
+  background-repeat: no-repeat;
+  background-position: right;
+}
