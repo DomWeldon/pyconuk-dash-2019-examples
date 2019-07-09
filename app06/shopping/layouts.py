@@ -16,8 +16,7 @@ def shopping_layout() -> html.Div:
         children=[
             html.H1("Shopping List"),
             html.Ul(
-                id="my-shopping-ul",
-                children=list_items(data_store["items"]),
+                id="my-shopping-ul", children=list_items(data_store["items"])
             ),
             dcc.Input(id="my-shopping-input"),
             html.Button(

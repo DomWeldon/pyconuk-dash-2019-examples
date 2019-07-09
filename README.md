@@ -6,6 +6,8 @@ _Wednesday 10th July 2019, 14.00, Singapore Room, Congress Center Basel._
 
 **Please note the examples in this repository require Python >= 3.6 - official python 3.5 support is being withdrawn in January 2020...**
 
+The slides relating to this talk are available here: [http://bit.ly/ep2019dash](http://bit.ly/ep2019dash).
+
 ### Example Applications
 
 Run the apps in this repository to see how Dash can be used.

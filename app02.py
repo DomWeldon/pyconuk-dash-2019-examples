@@ -15,9 +15,7 @@ app = dash.Dash(__name__)
 
 # load out initial dataset
 titanic_path = Path("./datasets/titanic.csv")
-assert (
-    titanic_path.exists()
-), "Cannot find titanic dataset."
+assert titanic_path.exists(), "Cannot find titanic dataset."
 df = pd.read_csv(titanic_path)
 
 app.layout = html.Div(
@@ -27,18 +25,13 @@ app.layout = html.Div(
         dcc.Dropdown(
             id="my-dropdown",
             options=[{"label": "All", "value": "both"}]
-            + [
-                {"label": sex, "value": sex}
-                for sex in df.Sex.unique()
-            ],
+            + [{"label": sex, "value": sex} for sex in df.Sex.unique()],
             value="both",
         ),
         html.Div(id="my-div"),
         dash_table.DataTable(
             id="my-table",
-            columns=[
-                {"name": i, "id": i} for i in df.columns
-            ],
+            columns=[{"name": i, "id": i} for i in df.columns],
             data=[],
         ),
     ]
@@ -46,15 +39,8 @@ app.layout = html.Div(
 
 
 @app.callback(
-    Output(
-        component_id="my-table", component_property="data"
-    ),
-    [
-        Input(
-            component_id="my-dropdown",
-            component_property="value",
-        )
-    ],
+    Output(component_id="my-table", component_property="data"),
+    [Input(component_id="my-dropdown", component_property="value")],
 )
 def provide_passengers(sex: str) -> Iterable[Mapping]:
     global df
@@ -66,16 +52,8 @@ def provide_passengers(sex: str) -> Iterable[Mapping]:
 
 
 @app.callback(
-    Output(
-        component_id="my-div",
-        component_property="children",
-    ),
-    [
-        Input(
-            component_id="my-dropdown",
-            component_property="value",
-        )
-    ],
+    Output(component_id="my-div", component_property="children"),
+    [Input(component_id="my-dropdown", component_property="value")],
 )
 def update_output_div(sex: str) -> str:
     if sex == "both":

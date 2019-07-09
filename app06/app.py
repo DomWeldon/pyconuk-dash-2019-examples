@@ -11,6 +11,7 @@ class App:
 
     Simplified from decisionLab/GrandUI.
     """
+
     _ROUTES = {}
     """Store of routes which map to layouts."""
 
@@ -73,10 +74,7 @@ class App:
 
         # use as a decorator
         def decorator(f):
-            cls._ROUTES[path] = {
-                "label": label,
-                "callable": f,
-            }
+            cls._ROUTES[path] = {"label": label, "callable": f}
 
         return decorator
 

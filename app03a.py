@@ -1,6 +1,8 @@
 """Example of correctly filtering titanic dataset."""
+from collections import Counter
 from pathlib import Path
-from typing import Iterable, Mapping
+from string import ascii_lowercase
+from typing import Iterable, Mapping, Tuple
 
 import dash
 import dash_core_components as dcc
@@ -15,71 +17,63 @@ app = dash.Dash(__name__)
 
 # load out initial dataset
 titanic_path = Path("./datasets/titanic.csv")
-assert (
-    titanic_path.exists()
-), "Cannot find titanic dataset."
+assert titanic_path.exists(), "Cannot find titanic dataset."
 df = pd.read_csv(titanic_path)
+
+
+def series_count_first_letter(
+    s: Iterable[str]
+) -> Tuple[Iterable[str], Iterable[int]]:
+    """I felt like being a bit silly and wrote this in one line for fun."""
+    return zip(
+        *sorted(
+            dict(
+                **{
+                    k: v - 1
+                    for k, v in Counter(
+                        [
+                            x.replace("(", "")
+                            .split(".", 1)[1]
+                            .strip()[0]
+                            .lower()
+                            for x in s
+                        ]
+                        + list(ascii_lowercase)
+                    ).items()
+                }
+            ).items(),
+            key=lambda t: ascii_lowercase.find(t[0]),
+        )
+    )  # for loops are your friends someimes.
+
+
+# get our numbers
+letters, freq = series_count_first_letter(df.Name)
 
 app.layout = html.Div(
     children=[
-        html.H1("Titanic Dataset"),
-        html.H5("Search for a name"),
-        dcc.Dropdown(
-            id="my-dropdown",
-            options=[{"label": "All", "value": "both"}]
-            + [
-                {"label": sex, "value": sex}
-                for sex in df.Sex.unique()
-            ],
-            value="both",
-        ),
-        html.Div(id="my-div"),
-        dash_table.DataTable(
-            id="my-table",
-            columns=[
-                {"name": i, "id": i} for i in df.columns
-            ],
-            data=[],
+        html.H1("Titanic Names"),
+        dcc.Graph(
+            id="example-graph",
+            figure={
+                "data": [
+                    {
+                        "x": letters,
+                        "y": freq,
+                        "type": "bar",
+                        "name": "Titanic Passengers By First Name",
+                    }
+                ],
+                "layout": {
+                    "title": (
+                        "Number of Passengers on the Titanic By First "
+                        "Letter of First Name"
+                    )
+                },
+            },
         ),
     ]
 )
-
-
-@app.callback(
-    Output(
-        component_id="my-table", component_property="data"
-    ),
-    [
-        Input(
-            component_id="my-dropdown",
-            component_property="value",
-        )
-    ],
-)
-def provide_passengers(sex: str) -> Iterable[Mapping]:
-    if sex == "both":
-        return df.to_dict("rows")
-
-    return df[df.Sex == sex].to_dict("rows")
-
-
-@app.callback(
-    Output(
-        component_id="my-div",
-        component_property="children",
-    ),
-    [
-        Input(
-            component_id="my-dropdown",
-            component_property="value",
-        )
-    ],
-)
-def update_output_div(sex: str) -> str:
-    if sex == "both":
-        return "Showing all sexes."
-
-    return f"Showing all {sex}s."
 
 
 if __name__ == "__main__":

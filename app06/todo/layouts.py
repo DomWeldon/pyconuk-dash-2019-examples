@@ -15,13 +15,8 @@ def todo_layout() -> html.Div:
     return html.Div(
         children=[
             html.H1("To Do List"),
-            html.Ul(
-                id="my-todo-ul",
-                children=list_tasks(data_store["tasks"]),
-            ),
+            html.Ul(id="my-todo-ul", children=list_tasks(data_store["tasks"])),
             dcc.Input(id="my-todo-input"),
-            html.Button(
-                id="my-todo-button", n_clicks=0, children="Add Task"
-            ),
+            html.Button(id="my-todo-button", n_clicks=0, children="Add Task"),
         ]
     )
