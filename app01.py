@@ -10,7 +10,7 @@ app = dash.Dash(__name__)
 app.layout = html.Div(
     children=[
         html.H1(id="my-h1"),
-        dcc.Input(id="my-input", value="Lithuania", type="text"),
+        dcc.Input(id="my-input", value="Basel", type="text"),
     ]
 )
 
@@ -24,4 +24,4 @@ def update_output_div(input_value: str) -> str:
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(debug=True, host="0.0.0.0")

@@ -12,13 +12,19 @@ The slides relating to this talk are available here: [http://bit.ly/ep2019dash](
 
 Run the apps in this repository to see how Dash can be used.
 
+### JGMTFC: Run Everything with Docker-compose
+
+    docker-compose -f docker-compose-talk.yml up
+
+This will make the links on the slides work: [http://bit.ly/ep2019dash](http://bit.ly/ep2019dash)
+
 #### Install
 
 This is a freeze of my environment in which all these worked.
 
     pip install -r requirements.txt
 
-#### Run
+#### Run Individually
 
 **Hello World**
 

@@ -1,0 +1,15 @@
+FROM python:3.7
+
+
+# set working directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+# add app
+ADD . /usr/src/app
+
+# install requirements
+RUN pip install -r requirements.txt
+
+# run server
+CMD python app01.py

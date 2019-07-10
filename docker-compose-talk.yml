@@ -1,0 +1,58 @@
+version: '2.0'
+
+services:
+  app00:
+    container_name: europython_app00
+    build:
+      context: .
+      dockerfile: Dockerfile00
+    ports:
+      - 8049:8050
+
+  app01:
+    container_name: europython_app01
+    build:
+      context: .
+      dockerfile: Dockerfile01
+    ports:
+      - 8051:8050
+
+  app03:
+    container_name: europython_app03
+    build:
+      context: .
+      dockerfile: Dockerfile03
+    ports:
+      - 8052:8050
+
+  app03a:
+    container_name: europython_app03a
+    build:
+      context: .
+      dockerfile: Dockerfile03a
+    ports:
+      - 8053:8050
+
+  app04:
+    container_name: europython_app04
+    build:
+      context: .
+      dockerfile: Dockerfile04
+    ports:
+      - 8054:8050
+
+  # app05:
+  #   container_name: europython_app05
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile05
+  #   ports:
+  #     - 8055:8050
+
+  app06:
+    container_name: europython_app06
+    build:
+      context: .
+      dockerfile: Dockerfile06
+    ports:
+      - 8056:8050
