@@ -1,12 +1,12 @@
-# EuroPython 2019 🇨🇭
+# PyCon UK 2019 🏴󠁧󠁢󠁷󠁬󠁳󠁿🇪🇺
 
-_Wednesday 10th July 2019, 14.00, Singapore Room, Congress Center Basel._
+_Sunday 15 September, 12.00 Room D._
 
 ## Dash: INTERACTIVE DATA VISUALIZATION WEB APPS WITH NO JAVASCRIPT
 
 **Please note the examples in this repository require Python >= 3.6 - official python 3.5 support is being withdrawn in January 2020...**
 
-The slides relating to this talk are available here: [http://bit.ly/ep2019dash](http://bit.ly/ep2019dash).
+The slides relating to this talk are available here: [http://bit.ly/pyconukdash2019slides](http://bit.ly/pyconukdash2019slides).
 
 ### Example Applications
 
@@ -16,7 +16,7 @@ Run the apps in this repository to see how Dash can be used.
 
     docker-compose -f docker-compose-talk.yml up
 
-This will make the links on the slides work: [http://bit.ly/ep2019dash](http://bit.ly/ep2019dash)
+This will make the links on the slides work: [http://bit.ly/pyconukdash2019slides](http://bit.ly/pyconukdash2019slides)
 
 #### Install
 

@@ -10,7 +10,7 @@ app = dash.Dash(__name__)
 app.layout = html.Div(
     children=[
         html.H1(id="my-h1"),
-        dcc.Input(id="my-input", value="Basel", type="text"),
+        dcc.Input(id="my-input", value="Cardiff", type="text"),
     ]
 )
 
